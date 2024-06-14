@@ -1,5 +1,34 @@
 ---
+const pageTitle = "About Me";
 
+const identity = {
+  firstName: "Gail",
+  pronouns: "she/they",
+  country: "USA",
+  occupation: "Software Engineer",
+  hobbies: ["singing", "volunteering", "watching the Red Sox", "fiber arts"],
+};
+
+const skills = [
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "Typescript",
+  "Python",
+  "Ruby",
+  "AngularJS",
+  "Angular",
+  "Vue",
+  "Ruby on Rails",
+  "Django",
+  "Java",
+];
+
+const finished = false;
+
+const skillColor = "magenta";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
 <html lang="en">
@@ -8,14 +37,26 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>{pageTitle}</title>
+    <style define:vars={{ skillColor, fontWeight, textCase }}>
+      h1 {
+        color: purple;
+        font-size: 4rem;
+      }
+
+      .skill {
+        color: var(--skillColor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
+      }
+    </style>
   </head>
   <body>
     <a href="/">Home</a>
     <a href="/about">About</a>
     <a href="/blog">Blog</a>
 
-    <h1>About Me</h1>
+    <h1>{pageTitle}</h1>
     <h2>... and my new Astro site!</h2>
 
     <p>
@@ -27,5 +68,35 @@
       This site will update as I complete more of the tutorial, so keep checking
       back and see how my journey is going!
     </p>
+
+    <p>Here are a few facts about me:</p>
+    <ul>
+      <li>
+        My name is {identity.firstName} and I use {identity.pronouns} pronouns.
+      </li>
+      <li>
+        I live in {identity.country} and I work as a {identity.occupation}.
+      </li>
+      {
+        identity.hobbies.length >= 2 && (
+          <li>
+            Two of my hobbies are: {identity.hobbies[0]} and{" "}
+            {identity.hobbies[1]}.
+          </li>
+        )
+      }
+    </ul>
+    <p>My skills are:</p>
+    <ul>
+      {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
+
+    {
+      finished ? (
+        <p>I have finished the tutorial!</p>
+      ) : (
+        <p>I have not yet finished the tutorial.</p>
+      )
+    }
   </body>
 </html>
