@@ -1,4 +1,5 @@
 ---
+layout: ../../layouts/MarkdownPostLayout.astro
 title: "My Second Blog Post"
 pubDate: 2024-06-14
 description: "This is for fun."
@@ -8,9 +9,5 @@ image:
   alt: "Thumbnail of Astro arcs"
 tags: ["astro", "blogging", "learning in public"]
 ---
-
-# My Second Blog Post
-
-Published on 2024-06-14
 
 This is not very interesting.
